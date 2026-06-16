@@ -1,0 +1,260 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    background-color: #F5F5F7;
+    color: #1D1D1F;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  body.dark {
+    background-color: #0E0E10;
+    color: #F5F5F7;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 99px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.015);
+  border-radius: 24px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-card {
+  background: rgba(22, 22, 28, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Glassmorphism sidebar */
+.glass-sidebar {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-right: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.dark .glass-sidebar {
+  background: rgba(14, 14, 18, 0.6);
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Premium Apple-style Inputs */
+.apple-input {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1.5px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #1D1D1F;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-input::placeholder {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.apple-input:focus {
+  border-color: #007AFF;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.12);
+  outline: none;
+}
+
+.dark .apple-input {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  color: #F5F5F7;
+}
+
+.dark .apple-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.dark .apple-input:focus {
+  background: rgba(20, 20, 25, 0.9);
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.22);
+}
+
+/* Premium Buttons */
+.apple-btn-primary {
+  background: #007AFF;
+  color: #FFFFFF;
+  border-radius: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.apple-btn-primary:hover {
+  background: #006ddc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 122, 255, 0.25);
+}
+
+.apple-btn-primary:active {
+  transform: translateY(0);
+  background: #005cb8;
+}
+
+.apple-btn-secondary {
+  background: rgba(0, 0, 0, 0.04);
+  color: #1D1D1F;
+  border-radius: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.apple-btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.07);
+  transform: translateY(-1px);
+}
+
+.dark .apple-btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: #F5F5F7;
+}
+
+.dark .apple-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* A4 Print Layout Optimization */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide all UI chrome */
+  header,
+  aside,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  /* Make the main container full width */
+  main,
+  .flex-1 {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Remove frosted glass effects from document */
+  #a4-document-preview-pane {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 10mm !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Ensure dark mode classes don't affect print */
+  .dark #a4-document-preview-pane,
+  .dark body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .print-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+}
+
+/* Watermark styles */
+.watermark-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.watermark-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  font-size: 5rem;
+  font-weight: 800;
+  opacity: 0.04;
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+  z-index: 0;
+}
+
+.dark .watermark-text {
+  opacity: 0.06;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-outfit {
+  font-family: 'Outfit', sans-serif;
+}
